@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<title>ROYALPOPSTRAP — Early Access</title>
+<meta name="description" content="Custom integrated straps for the Swatch x AP Royal Pop. Join the early access list." />
+<meta name="theme-color" content="#000000" />
+<meta property="og:title" content="ROYALPOPSTRAP — Early Access" />
+<meta property="og:description" content="Custom integrated straps for the Swatch x AP Royal Pop. Coming soon." />
+<meta property="og:image" content="./hero-demontage.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="preconnect" href="https://rsms.me/" />
+<link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+<style>
+  :root {
+    --bg: #000;
+    --fg: #fff;
+    --muted: #8a8a8a;
+    --line: rgba(255, 255, 255, .12);
+    --accent: #fff;
+    --radius: 999px;
+    --max: 560px;
+    --grain-opacity: .04;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--fg); }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-feature-settings: 'cv11', 'ss01', 'ss03';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    min-height: 100dvh;
+    overflow-x: hidden;
+    line-height: 1.4;
+  }
+
+  /* radial fade behind hero */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(80vw 80vh at 50% 35%, rgba(255,255,255,.05), transparent 65%),
+      radial-gradient(60vw 60vh at 50% 110%, rgba(255,255,255,.03), transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* film grain overlay */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/></svg>");
+    opacity: var(--grain-opacity);
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .wrap {
+    position: relative;
+    z-index: 2;
+    min-height: 100dvh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    padding: clamp(20px, 4vw, 32px);
+    gap: clamp(40px, 8vh, 80px);
+  }
+
+  /* header / logo */
+  header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    color: var(--fg);
+    text-decoration: none;
+    animation: fadeUp .9s ease-out .1s both;
+  }
+  .logo svg { display: block; }
+
+  /* hero */
+  main {
+    display: grid;
+    place-items: center;
+    text-align: center;
+  }
+  .stack {
+    width: 100%;
+    max-width: var(--max);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(24px, 4vh, 36px);
+  }
+
+  .hero-img {
+    width: 100%;
+    max-width: 480px;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    background: #0a0a0a;
+    border-radius: 14px;
+    box-shadow: 0 30px 80px -20px rgba(0,0,0,.8), 0 0 0 1px var(--line);
+    animation: fadeUp 1.1s cubic-bezier(.2,.7,.2,1) .2s both;
+  }
+
+  .label {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    color: var(--muted);
+    animation: fadeUp 1s ease-out .35s both;
+  }
+  .label .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: #ff4d4d;
+    box-shadow: 0 0 12px #ff4d4d;
+    animation: pulse 1.6s ease-in-out infinite;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: clamp(36px, 6.2vw, 64px);
+    line-height: .98;
+    letter-spacing: -.03em;
+    font-weight: 600;
+    animation: fadeUp 1s ease-out .45s both;
+  }
+  h1 em {
+    font-style: normal;
+    background: linear-gradient(180deg, #fff 0%, #9a9a9a 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .lede {
+    margin: 0;
+    max-width: 460px;
+    font-size: clamp(15px, 1.6vw, 17px);
+    color: var(--muted);
+    line-height: 1.55;
+    animation: fadeUp 1s ease-out .55s both;
+  }
+
+  /* form */
+  form {
+    width: 100%;
+    max-width: 460px;
+    animation: fadeUp 1s ease-out .65s both;
+  }
+  .field {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 6px;
+    padding: 6px;
+    background: rgba(255,255,255,.04);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    transition: border-color .25s ease, background .25s ease;
+  }
+  .field:focus-within {
+    border-color: rgba(255,255,255,.35);
+    background: rgba(255,255,255,.06);
+  }
+  .field input {
+    appearance: none;
+    background: transparent;
+    border: 0;
+    outline: 0;
+    padding: 14px 18px;
+    color: var(--fg);
+    font: inherit;
+    font-size: 15px;
+    letter-spacing: -.005em;
+    min-width: 0;
+  }
+  .field input::placeholder { color: var(--muted); }
+
+  .cta {
+    appearance: none;
+    border: 0;
+    background: var(--accent);
+    color: #000;
+    padding: 14px 22px;
+    font: inherit;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: .04em;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: transform .15s ease, opacity .15s ease, background .2s ease;
+    white-space: nowrap;
+  }
+  .cta:hover { transform: translateY(-1px); }
+  .cta:active { transform: translateY(0); }
+  .cta:disabled { opacity: .55; cursor: progress; }
+
+  .fineprint {
+    margin: 14px 4px 0;
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: .01em;
+    text-align: left;
+  }
+
+  /* success state */
+  .success {
+    display: none;
+    width: 100%;
+    max-width: 460px;
+    padding: 22px 24px;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    background: rgba(255,255,255,.03);
+    text-align: left;
+    animation: fadeUp .6s ease-out both;
+  }
+  .success.is-on { display: block; }
+  .success h2 {
+    margin: 0 0 6px;
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: -.01em;
+  }
+  .success p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .check {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    background: #fff;
+    color: #000;
+    font-size: 14px;
+    font-weight: 700;
+    margin-right: 10px;
+    vertical-align: -7px;
+  }
+
+  /* error */
+  .err {
+    margin: 10px 6px 0;
+    color: #ff6b6b;
+    font-size: 13px;
+    min-height: 16px;
+    text-align: left;
+  }
+
+  /* footer */
+  footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    font-size: 11px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    animation: fadeUp 1s ease-out .8s both;
+  }
+  footer a { color: var(--muted); text-decoration: none; transition: color .2s; }
+  footer a:hover { color: var(--fg); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%      { opacity: .45; transform: scale(.85); }
+  }
+
+  @media (max-width: 520px) {
+    .field { grid-template-columns: 1fr; padding: 8px; gap: 8px; }
+    .cta { width: 100%; padding: 14px; }
+    footer { flex-direction: column; gap: 10px; }
+    .hero-img { aspect-ratio: 4 / 3; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <a class="logo" href="/" aria-label="ROYALPOPSTRAP — home">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+          <path d="M7 2 L17 2 L22 7 L22 17 L17 22 L7 22 L2 17 L2 7 Z" />
+          <circle cx="5"  cy="5"  r=".9" fill="currentColor" stroke="none"/>
+          <circle cx="12" cy="3.2" r=".9" fill="currentColor" stroke="none"/>
+          <circle cx="19" cy="5"  r=".9" fill="currentColor" stroke="none"/>
+          <circle cx="20.8" cy="12" r=".9" fill="currentColor" stroke="none"/>
+          <circle cx="19" cy="19" r=".9" fill="currentColor" stroke="none"/>
+          <circle cx="12" cy="20.8" r=".9" fill="currentColor" stroke="none"/>
+          <circle cx="5"  cy="19" r=".9" fill="currentColor" stroke="none"/>
+          <circle cx="3.2" cy="12" r=".9" fill="currentColor" stroke="none"/>
+        </svg>
+        <span>ROYALPOPSTRAP</span>
+      </a>
+    </header>
+
+    <main>
+      <div class="stack">
+        <img class="hero-img" src="./hero-demontage.png" alt="ROYALPOPSTRAP — modular strap concept on dark background" />
+
+        <div class="label">
+          <span class="dot" aria-hidden="true"></span>
+          Early Access · Coming Soon
+        </div>
+
+        <h1>Swap the strap.<br/><em>Pop the look.</em></h1>
+
+        <p class="lede">
+          Bracelets intégrés sur-mesure pour la Royal Pop.
+          Architecture Royal Oak, matière plastique signature.
+          Production limitée — accès anticipé sur invitation.
+        </p>
+
+        <form id="waitlist" novalidate>
+          <div class="field">
+            <input
+              id="email"
+              name="email"
+              type="email"
+              autocomplete="email"
+              required
+              placeholder="ton@email.com"
+              aria-label="Adresse email"
+            />
+            <button class="cta" type="submit" id="submit">Get early access</button>
+          </div>
+          <div class="err" id="err" role="alert" aria-live="polite"></div>
+          <p class="fineprint">
+            On te prévient quand on lance. Pas de spam, désabonnement en 1 clic.
+          </p>
+        </form>
+
+        <div class="success" id="success" role="status" aria-live="polite">
+          <h2><span class="check" aria-hidden="true">✓</span>Tu es sur la liste.</h2>
+          <p>Vérifie tes emails — on te prévient dès que la première série tombe. <br/>Ta place est gardée.</p>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <span>© 2026 ROYALPOPSTRAP</span>
+      <span>NOT AFFILIATED WITH SWATCH OR AUDEMARS PIGUET</span>
+    </footer>
+  </div>
+
+<script>
+(() => {
+  const form    = document.getElementById('waitlist');
+  const input   = document.getElementById('email');
+  const btn     = document.getElementById('submit');
+  const errBox  = document.getElementById('err');
+  const success = document.getElementById('success');
+
+  const STORAGE_KEY = 'rps_waitlist_email';
+
+  // Already subscribed?
+  if (localStorage.getItem(STORAGE_KEY)) {
+    showSuccess();
+  }
+
+  function isEmail(v) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim());
+  }
+
+  function showError(msg) {
+    errBox.textContent = msg;
+    input.setAttribute('aria-invalid', 'true');
+  }
+  function clearError() {
+    errBox.textContent = '';
+    input.removeAttribute('aria-invalid');
+  }
+  function showSuccess() {
+    form.style.display = 'none';
+    success.classList.add('is-on');
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    clearError();
+    const value = input.value.trim();
+
+    if (!isEmail(value)) {
+      showError('Email invalide. Vérifie le format.');
+      input.focus();
+      return;
+    }
+
+    btn.disabled = true;
+    const original = btn.textContent;
+    btn.textContent = 'Adding…';
+
+    try {
+      // TODO: brancher un backend (Formspree, Getform, Mailchimp, Resend, etc.)
+      // Exemple Formspree :
+      // await fetch('https://formspree.io/f/XXXXXXXX', {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      //   body: JSON.stringify({ email: value })
+      // });
+
+      // Stockage local pour démo
+      localStorage.setItem(STORAGE_KEY, value);
+
+      // Petite tempo pour l'effet "ça travaille"
+      await new Promise(r => setTimeout(r, 450));
+
+      showSuccess();
+    } catch (err) {
+      showError('Oups — réessaie dans un instant.');
+      btn.disabled = false;
+      btn.textContent = original;
+    }
+  });
+
+  input.addEventListener('input', clearError);
+})();
+</script>
+</body>
+</html>
