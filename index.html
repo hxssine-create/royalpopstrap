@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="fr">
+<html lang="en">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
@@ -311,8 +311,8 @@
         <div class="wordmark">R O Y A L P O P S T R A P</div>
 
         <p class="teaser">
-          Une nouvelle façon de porter votre <strong>Royal Pop</strong>.<br/>
-          Accès anticipé sur invitation. Drop limité.
+          A new way to wear your <strong>Royal Pop</strong>.<br/>
+          Early access by invitation. Limited drop.
         </p>
 
         <!-- Netlify Forms: server-side form. Detected at build time via static markup. -->
@@ -326,7 +326,7 @@
         >
           <input type="hidden" name="form-name" value="waitlist" />
           <p class="hidden">
-            <label>Ne pas remplir : <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
+            <label>Do not fill: <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
           </p>
           <div class="field">
             <input
@@ -335,18 +335,18 @@
               type="email"
               autocomplete="email"
               required
-              placeholder="ton@email.com"
-              aria-label="Adresse email"
+              placeholder="your@email.com"
+              aria-label="Email address"
             />
             <button class="cta" type="submit" id="submit">Notify me</button>
           </div>
           <div class="err" id="err" role="alert" aria-live="polite"></div>
-          <p class="fineprint">Un seul email. Aucune revente. Désabonnement 1 clic.</p>
+          <p class="fineprint">One email only. No resell. Unsubscribe in one click.</p>
         </form>
 
         <div class="success" id="success" role="status" aria-live="polite">
-          <h2><span class="check" aria-hidden="true">✓</span>Tu es sur la liste.</h2>
-          <p>On te prévient avant tout le monde dès que le premier drop tombe.</p>
+          <h2><span class="check" aria-hidden="true">✓</span>You're on the list.</h2>
+          <p>We'll let you know before anyone else when the first drop drops.</p>
         </div>
       </div>
     </main>
@@ -395,7 +395,7 @@
     const value = input.value.trim();
 
     if (!isEmail(value)) {
-      showError('Email invalide.');
+      showError('Invalid email.');
       input.focus();
       return;
     }
@@ -420,7 +420,7 @@
       localStorage.setItem(KEY, value);
       showSuccess();
     } catch (err) {
-      showError('Oups — réessaie dans un instant.');
+      showError('Oops — please try again in a moment.');
       btn.disabled = false;
       btn.textContent = original;
     }
